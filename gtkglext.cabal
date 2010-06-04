@@ -16,11 +16,14 @@ Description:    GtkGLExt provides the GDK objects to support OpenGL rendering in
 
 Category:       Graphics
 Tested-With:    GHC == 6.12.1
-x-Types-File:   Graphics/UI/Gtk/OpenGL/Types.chs
-x-Types-ModName: Graphics.UI.Gtk.OpenGL.Types
-x-Types-Forward: *Graphics.UI.GtkInternals
-x-Types-Destructor: objectUnrefFromMainloop
 Extra-Source-Files: Gtk2HsSetup.hs
+					hierarchy.list
+					
+x-Types-File:       Graphics/UI/Gtk/OpenGL/Types.chs
+x-Types-ModName:    Graphics.UI.Gtk.OpenGL.Types
+x-Types-Forward:    *Graphics.UI.GtkInternals
+x-Types-Destructor: objectUnrefFromMainloop
+x-Types-Hierarchy:  hierarchy.list
 
 Data-Dir:		demo
 Data-Files:		RotatingCube.hs
