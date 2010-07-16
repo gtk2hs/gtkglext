@@ -69,7 +69,9 @@ main = do
 
   label <- Gtk.labelNew (Just "Gtk2Hs using OpenGL via HOpenGL!")
   button <- Gtk.buttonNewWithLabel "Close"
-  Gtk.onClicked button Gtk.mainQuit
+  Gtk.onClicked button (do 
+                         Gtk.widgetDestroy window
+                         Gtk.mainQuit)
   Gtk.set vbox [ Gtk.containerChild := canvas,
                  Gtk.containerChild := label,
                  Gtk.containerChild := button ]
