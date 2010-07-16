@@ -27,8 +27,6 @@
 module Graphics.UI.Gtk.OpenGL (
   -- * Detail
   
-  -- | A typical program will look like this
-
   -- * Simple OpenGL drawing area widget
   module Graphics.UI.Gtk.OpenGL.DrawingArea,
   -- * Initialisation and query functions
