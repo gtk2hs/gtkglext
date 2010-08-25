@@ -9,9 +9,9 @@ import qualified Graphics.UI.Gtk.OpenGL as GtkGL
 import Graphics.Rendering.OpenGL as GL
 
 main :: IO ()
-main = do 
+main = do
   Gtk.initGUI
-  
+
   -- Initialise the Gtk+ OpenGL extension
   -- (including reading various command line parameters)
   GtkGL.initGL
@@ -21,10 +21,10 @@ main = do
   glconfig <- GtkGL.glConfigNew [GtkGL.GLModeRGBA,
                                  GtkGL.GLModeDepth,
                                  GtkGL.GLModeDouble]
-  
+
   -- Create an OpenGL drawing area widget
   canvas <- GtkGL.glDrawingAreaNew glconfig
-  
+
   Gtk.widgetSetSizeRequest canvas 350 350
 
   -- Initialise some GL setting just before the canvas first gets shown
@@ -69,7 +69,7 @@ main = do
 
   label <- Gtk.labelNew (Just "Gtk2Hs using OpenGL via HOpenGL!")
   button <- Gtk.buttonNewWithLabel "Close"
-  Gtk.onClicked button (do 
+  Gtk.onClicked button (do
                          Gtk.widgetDestroy window
                          Gtk.mainQuit)
   Gtk.set vbox [ Gtk.containerChild := canvas,
