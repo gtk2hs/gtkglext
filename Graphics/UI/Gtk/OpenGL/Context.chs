@@ -49,7 +49,7 @@ module Graphics.UI.Gtk.OpenGL.Context (
 import Control.Monad	(liftM)
 
 import System.Glib.FFI
-import System.Glib.GObject			(makeNewGObject)
+import System.Glib.GObject			(makeNewGObject, wrapNewGObject)
 {#import Graphics.UI.Gtk.OpenGL.Types#}
 
 {# context lib="gtkglext" prefix="gdk" #}
@@ -81,7 +81,7 @@ glContextNew :: GLDrawableClass gldrawable =>
                      -- (currently not used).
  -> IO GLContext
 glContextNew gldrawable shareList direct renderType =
-  makeNewGObject mkGLContext $
+  wrapNewGObject mkGLContext $
   {# call gdk_gl_context_new #}
     (toGLDrawable gldrawable)
     (maybe (GLContext nullForeignPtr) toGLContext shareList)

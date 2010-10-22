@@ -50,7 +50,7 @@ module Graphics.UI.Gtk.OpenGL.Pixmap (
 import Control.Monad	(liftM)
 
 import System.Glib.FFI
-import System.Glib.GObject			(makeNewGObject)
+import System.Glib.GObject			(makeNewGObject, wrapNewGObject)
 {#import Graphics.UI.Gtk.OpenGL.Types#}
 
 {# context lib="gtkglext" prefix="gdk" #}
@@ -67,7 +67,7 @@ glPixmapNew ::
  -> Pixmap      -- ^ @pixmap@ - the 'Pixmap' to be used as the rendering area.
  -> IO GLPixmap
 glPixmapNew glconfig pixmap =
-  makeNewGObject mkGLPixmap $
+  wrapNewGObject mkGLPixmap $
   {# call gdk_gl_pixmap_new #}
     (toGLConfig glconfig)
     (toPixmap pixmap)

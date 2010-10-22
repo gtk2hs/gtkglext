@@ -59,7 +59,7 @@ import Control.Monad	(liftM)
 
 import System.Glib.FFI
 import System.Glib.Flags
-import System.Glib.GObject			(makeNewGObject)
+import System.Glib.GObject			(makeNewGObject, wrapNewGObject)
 {#import Graphics.UI.Gtk.OpenGL.Types#}
 
 {# context lib="gtkglext" prefix="gdk" #}
@@ -113,7 +113,7 @@ glConfigNew ::
     [GLConfigMode] -- ^ @mode@ - display mode bit mask.
  -> IO GLConfig
 glConfigNew mode =
-  makeNewGObject mkGLConfig $
+  wrapNewGObject mkGLConfig $
   {# call gdk_gl_config_new_by_mode #}
     ((fromIntegral . fromFlags) mode)
 
@@ -125,7 +125,7 @@ glConfigNewForScreen ::
  -> [GLConfigMode] -- ^ @mode@ - display mode.
  -> IO GLConfig
 glConfigNewForScreen screen mode =
-  makeNewGObject mkGLConfig $
+  wrapNewGObject mkGLConfig $
   {# call gdk_gl_config_new_by_mode_for_screen #}
     screen
     ((fromIntegral . fromFlags) mode)

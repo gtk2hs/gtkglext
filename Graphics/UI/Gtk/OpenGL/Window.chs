@@ -50,7 +50,7 @@ module Graphics.UI.Gtk.OpenGL.Window (
 import Control.Monad	(liftM)
 
 import System.Glib.FFI
-import System.Glib.GObject			(makeNewGObject)
+import System.Glib.GObject			(makeNewGObject, wrapNewGObject)
 {#import Graphics.UI.Gtk.OpenGL.Types#}
 
 {# context lib="gtkglext" prefix="gdk" #}
@@ -67,7 +67,7 @@ glWindowNew :: GLConfig
                  -- area.
  -> IO GLWindow
 glWindowNew glconfig window =
-  makeNewGObject mkGLWindow $
+  wrapNewGObject mkGLWindow $
   {# call gdk_gl_window_new #}
     (toGLConfig glconfig)
     window
