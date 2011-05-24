@@ -35,9 +35,12 @@ module Graphics.UI.Gtk.OpenGL.General (
   glQueryGLExtension,
   glQueryVersion,
   glQueryVersionForDisplay,
+
+#if USE_DEPRECATED_PANGO
 -- ** Fonts
   glFontUsePangoFont,
   glFontUsePangoFontForDisplay,
+#endif
   ) where
 
 import Control.Monad	(liftM)
@@ -129,6 +132,7 @@ glQueryVersionForDisplay display =
          return (Just (fromIntegral major, fromIntegral minor))
     else return Nothing
 
+#if USE_DEPRECATED_PANGO
 -- | 
 --
 glFontUsePangoFont :: FontDescription -> Int -> Int -> Int -> IO Font
@@ -151,3 +155,4 @@ glFontUsePangoFontForDisplay display fontDesc first count listBase =
     (fromIntegral first)
     (fromIntegral count)
     (fromIntegral listBase)
+#endif

@@ -33,11 +33,17 @@ Source-Repository head
   type:         darcs
   location:     http://code.haskell.org/gtkglext/
 
+Flag use-deprecated
+  Description: Use functions from gtkglext-1.2.0 (or earlier) which have been deprecated or dropped
+  Default: False
+
 Library
         build-depends:  base >= 4 && < 5,
                         glib  >= 0.12 && < 0.13,
                         pango >= 0.12 && < 0.13,
                         gtk   >= 0.12 && < 0.13
+        if flag(use-deprecated)
+          cpp-options:  -DUSE_DEPRECATED_PANGO
 
         build-tools:    gtk2hsC2hs, gtk2hsHookGenerator, gtk2hsTypeGen
 						
