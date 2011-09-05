@@ -33,6 +33,10 @@ Source-Repository head
   type:         darcs
   location:     http://code.haskell.org/gtkglext/
 
+Flag have-quartz-gtk
+  Description: Assume that the installed GTK is the version for OS X backend by Quartz, and hence does not provide gdk_gl_config_get_screen or gdk_gl_config_get_depth
+  Default:  False
+
 Flag use-deprecated
   Description: Use functions from gtkglext-1.2.0 (or earlier) which have been deprecated or dropped
   Default: False
@@ -42,6 +46,8 @@ Library
                         glib  >= 0.12 && < 0.13,
                         pango >= 0.12 && < 0.13,
                         gtk   >= 0.12 && < 0.13
+        if flag(have-quartz-gtk)
+          cpp-options: -DHAVE_QUARTZ_GTK
         if flag(use-deprecated)
           cpp-options:  -DUSE_DEPRECATED_PANGO
 

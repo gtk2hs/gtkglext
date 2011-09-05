@@ -39,10 +39,8 @@ module Graphics.UI.Gtk.OpenGL.Config (
   glConfigNewForScreen,
 
 -- * Methods
-  glConfigGetScreen,
   glConfigGetColormap,
 --  glConfigGetVisual,
-  glConfigGetDepth,
   glConfigGetLayerPlane,
   glConfigGetNAuxBuffers,
   glConfigGetNSampleBuffers,
@@ -53,6 +51,10 @@ module Graphics.UI.Gtk.OpenGL.Config (
   glConfigHasDepthBuffer,
   glConfigHasStencilBuffer,
   glConfigHasAccumBuffer,
+#if !defined(HAVE_QUARTZ_GTK)
+  glConfigGetScreen,
+  glConfigGetDepth,
+#endif
   ) where
 
 import Control.Monad	(liftM)
@@ -135,12 +137,14 @@ glConfigNewForScreen screen mode =
 
 -- | Gets the 'Screen' associated with the 'GLConfig'.
 --
+#if !defined(HAVE_QUARTZ_GTK)
 glConfigGetScreen :: GLConfig
  -> IO Screen -- ^ returns the 'Screen'.
 glConfigGetScreen self =
   makeNewGObject mkScreen $
   {# call gdk_gl_config_get_screen #}
     (toGLConfig self)
+#endif
 
 -- | Gets the 'Colormap' that is appropriate for the OpenGL frame buffer
 -- configuration.
@@ -164,12 +168,14 @@ glConfigGetVisual self =
 -}
 -- | Gets the color depth of the OpenGL-capable visual.
 --
+#if !defined(HAVE_QUARTZ_GTK)
 glConfigGetDepth :: GLConfig
  -> IO Int -- ^ returns number of bits per pixel
 glConfigGetDepth self =
   liftM fromIntegral $
   {# call gdk_gl_config_get_depth #}
     (toGLConfig self)
+#endif
 
 -- | Gets the layer plane (level) of the frame buffer. Zero is the default
 -- frame buffer. Positive layer planes correspond to frame buffers that overlay
