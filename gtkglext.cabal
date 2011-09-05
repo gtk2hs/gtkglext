@@ -15,7 +15,7 @@ Description:    GtkGLExt provides the GDK objects to support OpenGL rendering in
                 and GtkWidget API add-ons to make GTK+ widgets OpenGL-capable.
 
 Category:       Graphics
-Tested-With:    GHC == 6.12.1
+Tested-With:    GHC == 6.10.4, GHC == 6.12.3, GHC == 7.0.4, GHC == 7.2.1
 Extra-Source-Files: SetupWrapper.hs SetupMain.hs Gtk2HsSetup.hs
 					hierarchy.list
 					
