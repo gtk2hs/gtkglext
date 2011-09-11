@@ -51,7 +51,8 @@ Library
         if flag(use-deprecated)
           cpp-options:  -DUSE_DEPRECATED_PANGO
 
-        build-tools:    gtk2hsC2hs, gtk2hsHookGenerator, gtk2hsTypeGen
+        build-tools:    gtk2hsC2hs >= 0.13.5,
+                        gtk2hsHookGenerator, gtk2hsTypeGen
 						
         exposed-modules:
           Graphics.UI.Gtk.OpenGL
