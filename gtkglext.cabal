@@ -1,5 +1,5 @@
 Name:           gtkglext
-Version:        0.12.1
+Version:        0.12.5.0
 License:        LGPL-2.1
 License-file:   COPYING
 Copyright:      (c) 2001-2010 The Gtk2Hs Team
@@ -30,8 +30,8 @@ Data-Files:		RotatingCube.hs
                 Makefile
 				
 Source-Repository head
-  type:         darcs
-  location:     http://code.haskell.org/gtkglext/
+  type:         git
+  location:     https://github.com/gtk2hs/gtkglext
 
 Flag have-quartz-gtk
   Description: Assume that the installed GTK is the version for OS X backend by Quartz, and hence does not provide gdk_gl_config_get_screen or gdk_gl_config_get_depth
@@ -43,15 +43,15 @@ Flag use-deprecated
 
 Library
         build-depends:  base >= 4 && < 5,
-                        glib  >= 0.12 && < 0.13,
-                        pango >= 0.12 && < 0.13,
-                        gtk   >= 0.12 && < 0.13
+                        glib  >= 0.12.5.0 && < 0.13,
+                        pango >= 0.12.5.0 && < 0.13,
+                        gtk   >= 0.12.5.0 && < 0.13
         if flag(have-quartz-gtk)
           cpp-options: -DHAVE_QUARTZ_GTK
         if flag(use-deprecated)
           cpp-options:  -DUSE_DEPRECATED_PANGO
 
-        build-tools:    gtk2hsC2hs >= 0.13.5,
+        build-tools:    gtk2hsC2hs >= 0.13.9,
                         gtk2hsHookGenerator, gtk2hsTypeGen
 						
         exposed-modules:
