@@ -47,9 +47,9 @@ custom-setup
 
 Library
         build-depends:  base >= 4 && < 5,
-                        glib  >= 0.12.5.0 && < 0.14,
-                        pango >= 0.12.5.0 && < 0.14,
-                        gtk   >= 0.12.5.0 && < 0.14
+                        glib  >= 0.13.3.0 && < 0.14,
+                        pango >= 0.13.2.0 && < 0.14,
+                        gtk   >= 0.14.3 && < 0.15
         if flag(have-quartz-gtk)
           cpp-options: -DHAVE_QUARTZ_GTK
         if flag(use-deprecated)
