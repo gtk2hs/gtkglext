@@ -1,5 +1,5 @@
 Name:           gtkglext
-Version:        0.13.1.0
+Version:        0.13.1.1
 License:        LGPL-2.1
 License-file:   COPYING
 Copyright:      (c) 2001-2010 The Gtk2Hs Team
@@ -54,6 +54,8 @@ Library
           cpp-options: -DHAVE_QUARTZ_GTK
         if flag(use-deprecated)
           cpp-options:  -DUSE_DEPRECATED_PANGO
+        if os(darwin)
+          cpp-options: -U__BLOCKS__ -D__attribute__(A)= -D_Nullable= -D_Nonnull=
 
         build-tools:    gtk2hsC2hs >= 0.13.9,
                         gtk2hsHookGenerator, gtk2hsTypeGen
