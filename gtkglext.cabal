@@ -49,13 +49,14 @@ Library
         build-depends:  base >= 4 && < 5,
                         glib  >= 0.13.3.0 && < 0.14,
                         pango >= 0.13.2.0 && < 0.14,
-                        gtk   >= 0.14.3 && < 0.15
+                        gtk   >= 0.14.3 && < 0.16
+        cpp-options: -U__BLOCKS__ -DGLIB_DISABLE_DEPRECATION_WARNINGS
         if flag(have-quartz-gtk)
           cpp-options: -DHAVE_QUARTZ_GTK
         if flag(use-deprecated)
           cpp-options:  -DUSE_DEPRECATED_PANGO
         if os(darwin)
-          cpp-options: -U__BLOCKS__ -D__attribute__(A)= -D_Nullable= -D_Nonnull=
+          cpp-options: -D_Nullable= -D_Nonnull=
 
         build-tools:    gtk2hsC2hs >= 0.13.9,
                         gtk2hsHookGenerator, gtk2hsTypeGen
